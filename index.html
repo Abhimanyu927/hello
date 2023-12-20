@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOYE MOYE</title>
+    <style>
+        body {
+            background: url('https://plus.unsplash.com/premium_photo-1683740128035-1a4c8b2e1ca3?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat fixed;
+            color: #fff; /* White text color for better visibility */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+        }
+
+        h1, h2 {
+            font-size: 3em;
+            position: relative;
+            animation: glitch 1s infinite linear, colorChange 5s infinite alternate;
+            text-align: center;
+        }
+
+        @keyframes glitch {
+            20%, 24%, 53%, 57%, 76%, 80% {
+                transform: translate(-5px, 5px);
+            }
+
+            21%, 23%, 55%, 56%, 78%, 79% {
+                transform: translate(5px, -5px);
+            }
+
+            22%, 54%, 77% {
+                transform: translate(-15px, 15px);
+            }
+
+            58%, 59% {
+                transform: translate(15px, -15px);
+            }
+        }
+
+        @keyframes colorChange {
+            0% {
+                color: rgb(255, 0, 0); /* Red */
+            }
+
+            50% {
+                color: rgb(0, 255, 0); /* Green */
+            }
+
+            100% {
+                color: rgb(0, 0, 255); /* Blue */
+            }
+        }
+
+        .rectangle {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        input {
+            margin-right: 10px;
+        }
+
+        .ghost-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <h2>I am Your Father</h2>
+    <h1>. MOYE MOYE</h1>
+
+    <div class="rectangle">
+        <input type="text" id="nameInput" placeholder="Write Your Name">
+        <button onclick="showName()">Submit</button>
+    </div>
+
+    <img src="https://example.com/ghost-image.jpg" alt="Ghost" class="ghost-image" id="ghostImage">
+
+    <script>
+        function showName() {
+            const nameInput = document.getElementById('nameInput');
+            const name = nameInput.value.trim();
+            
+            if (name !== '') {
+                const h1 = document.querySelector('h1');
+                const h2 = document.querySelector('h2');
+
+                h1.innerHTML = `.${h2.textContent}<br>${name}!`;
+                h2.style.display = 'none'; // Hide "I am Your Father" text
+
+                // Show the ghost image
+                const ghostImage = document.getElementById('ghostImage');
+                ghostImage.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
